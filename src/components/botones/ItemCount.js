@@ -20,7 +20,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   return (
     <div className="counter">
       <div className="counter-btn">
-        <div class="masMenos">
+        <div className="masMenos">
           <button className="counter-btn-btb" onClick={restar}>
             -
           </button>

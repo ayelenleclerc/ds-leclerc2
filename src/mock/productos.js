@@ -1,4 +1,4 @@
-export const productos = [
+const productos = [
   {
     id: 1,
     nombre: "Marroc",
@@ -6,7 +6,7 @@ export const productos = [
     marca: "Felfort",
     categoría: "Golosinas",
     precio: "$30.00",
-    stock: 60,
+    stock: 10,
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515919/Suarez/Productos/felfort/felfort_marroc_ss5pqn.jpg",
   },
   {
@@ -16,7 +16,7 @@ export const productos = [
     marca: "Felfort",
     categoría: "Golosinas",
     precio: "$60.00",
-    stock: 40,
+    stock: 10,
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515919/Suarez/Productos/felfort/felfort_mentitas_x7lmdt.jpg",
   },
   {
@@ -26,7 +26,7 @@ export const productos = [
     marca: "Felfort",
     categoría: "Golosinas",
     precio: "$60.00",
-    stock: 40,
+    stock: 10,
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515919/Suarez/Productos/felfort/felfort_medallon_ddl_pilqfu.jpg",
   },
   {
@@ -36,7 +36,9 @@ export const productos = [
     marca: "Felfort",
     categoría: "Golosinas",
     precio: "$70.00",
-    stock: 20,
+    stock: 10,
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515918/Suarez/Productos/felfort/felfort_licoritas_aduvxa.jpg",
   },
 ];
+
+export default productos;

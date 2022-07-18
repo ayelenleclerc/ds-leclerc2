@@ -1,19 +1,17 @@
-import React from "react";
-import ItemCount from "../botones/ItemCount";
-const Item = ({ item }) => {
-  const onAdd = () => {
-    console.log("click");
-  };
+import { Link } from "react-router-dom";
+const Item = ({ nombre, img, id, descripcion }) => {
   return (
     <div className="item">
-      <img className="item-img" src={item.img} alt="" />
+      <img className="item-img" src={img} alt={nombre} />
       <div>
-        <h2 className="item-title">{item.nombre}</h2>
-        <p className="item-description">{item.descripcion}</p>
-        <p className="item-description">Stock: {item.stock}</p>
-        <p className="item-description">{item.precio} /unidad</p>
+        <h2 className="item-title">{nombre}</h2>
+        <p className="item-description">{descripcion}</p>
       </div>
-      <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+      <div>
+        <Link to={`/item/:${id}`}>
+          <button>Ver producto</button>
+        </Link>
+      </div>
     </div>
   );
 };
