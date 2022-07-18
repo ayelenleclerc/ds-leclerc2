@@ -11,9 +11,9 @@ const Navbar = () => {
           <Link to="/" className="nav-li">
             Golosinas
           </Link>
-          <Link to="/item/:item" className="nav-li">
+          {/* <Link to="/item/:item" className="nav-li">
             Productos
-          </Link>
+          </Link> */}
           <li className="nav-li">Contacto</li>
         </ul>
         <CartWidget />
