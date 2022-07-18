@@ -14,6 +14,7 @@ const ItemListContainer = () => {
     traerProductos
       .then((data) => {
         setItems(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
