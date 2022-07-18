@@ -1,6 +1,6 @@
 const productos = [
   {
-    id: 1,
+    id: "1",
     nombre: "Marroc",
     descripcion: "Bocadito de marroc",
     marca: "Felfort",
@@ -10,7 +10,7 @@ const productos = [
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515919/Suarez/Productos/felfort/felfort_marroc_ss5pqn.jpg",
   },
   {
-    id: 2,
+    id: "2",
     nombre: "Mentitas",
     descripcion: "Bocadito de chocolate relleno de Menta",
     marca: "Felfort",
@@ -20,7 +20,7 @@ const productos = [
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515919/Suarez/Productos/felfort/felfort_mentitas_x7lmdt.jpg",
   },
   {
-    id: 3,
+    id: "3",
     nombre: "Medallón de Dulce de Leche",
     descripcion: "Bocadito de chocolate relleno de Dulce de Leche",
     marca: "Felfort",
@@ -30,7 +30,7 @@ const productos = [
     img: "https://res.cloudinary.com/ayelenleclerc/image/upload/v1657515919/Suarez/Productos/felfort/felfort_medallon_ddl_pilqfu.jpg",
   },
   {
-    id: 4,
+    id: "4",
     nombre: "Licoritas",
     descripcion: "Bombón de chocolate relleno de licor",
     marca: "Felfort",

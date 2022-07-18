@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -9,17 +10,14 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   const productoById = new Promise((res) => {
-    setTimeout(() => {
-      res(productos.find((producto) => producto.id === id));
-    }, 2000);
+    setTimeout(() => res(productos), 2000);
   });
 
   useEffect(() => {
-    productoById.then((respuesta) => {
-      setItem(respuesta);
-      console.log(respuesta);
-    });
-  }, [id]);
+    productoById
+      .then((res) => res.find((producto) => producto.id == id))
+      .then((res) => setItem(res));
+  }, []);
 
   return (
     <div>

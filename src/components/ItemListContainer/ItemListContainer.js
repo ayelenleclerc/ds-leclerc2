@@ -8,14 +8,11 @@ const ItemListContainer = () => {
   useEffect(() => {
     const traerProductos = new Promise((res) => {
       setTimeout(() => {
-        res(productos);
+        return res(productos);
       }, 2000);
     });
     traerProductos
-      .then((data) => {
-        setItems(data);
-        console.log(data);
-      })
+      .then((data) => setItems(data))
       .catch((error) => {
         console.log(error);
       });
