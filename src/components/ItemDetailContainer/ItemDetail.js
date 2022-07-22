@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import ItemCount from "../botones/ItemCount";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 const ItemDetail = ({ item }) => {
-  const onAdd = () => {
-    console.log("click");
+  const [cantidad, setCantidad] = useState(0);
+  const onAdd = (cantidad) => {
+    setCantidad(cantidad);
   };
-  useEffect(() => {
-    console.log(item);
-  }, []);
 
   return (
     <div className="item">
@@ -18,12 +17,18 @@ const ItemDetail = ({ item }) => {
         <p className="item-description">Stock: {item.stock}</p>
         <p className="item-description">{item.precio} /unidad</p>
       </div>
-      <ItemCount
-        stock={item.stock}
-        initial={1}
-        precio={item.precio}
-        onAdd={onAdd}
-      />
+      {cantidad === 0 ? (
+        <ItemCount
+          stock={item.stock}
+          initial={1}
+          precio={item.precio}
+          onAdd={onAdd}
+        />
+      ) : (
+        <Link to="/cart">
+          Añadiste {cantidad} unidades de {item.nombre} al carrito.
+        </Link>
+      )}
     </div>
   );
 };
