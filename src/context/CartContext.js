@@ -11,10 +11,10 @@ const Provider = (props) => {
   const addToCart = (item, cantidad) => {
     if (isInCart(item.id)) {
       setCart(
-        cart.map((produco) => {
-          return produco.id === item.id
-            ? { ...produco, cantidad: produco.cantidad + cantidad }
-            : produco;
+        cart.map((producto) => {
+          return producto.id === item.id
+            ? { ...producto, cantidad: producto.cantidad + cantidad }
+            : producto;
         })
       );
     } else {
