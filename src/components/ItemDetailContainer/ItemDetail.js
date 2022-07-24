@@ -1,11 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import ItemCount from "../botones/ItemCount";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import ItemCount from "../botones/ItemCount";
+
 const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(0);
+
+  const { addToCart } = useContext(CartContext);
+
   const onAdd = (cantidad) => {
     setCantidad(cantidad);
+    addToCart(item, cantidad);
   };
 
   return (
