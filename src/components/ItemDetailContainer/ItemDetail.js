@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import ItemCount from "../botones/ItemCount";
+import ItemCount from "../itemCount/ItemCount";
 
 const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState(0);
@@ -20,8 +20,10 @@ const ItemDetail = ({ item }) => {
       <div>
         <h2 className="item-title">{item.nombre}</h2>
         <p className="item-description">{item.descripcion}</p>
-        <p className="item-description">Stock: {item.stock}</p>
-        <p className="item-description">{item.precio} /unidad</p>
+        <p className="item-description">
+          Horas disponibles por semana: {item.stock}
+        </p>
+        <p className="item-description">${item.precio} /hora</p>
       </div>
       {cantidad === 0 ? (
         <ItemCount
@@ -32,9 +34,15 @@ const ItemDetail = ({ item }) => {
         />
       ) : (
         <Link to="/cart">
-          Añadiste {cantidad} unidades de {item.nombre} al carrito.
+          <span>
+            Añadiste {cantidad} horas {item.nombre} al Suegri-Carrito.
+          </span>
+          <button>Terminar mi compra</button>
         </Link>
       )}
+      <Link to="/">
+        <button>Seguir buscando suegra</button>
+      </Link>
     </div>
   );
 };

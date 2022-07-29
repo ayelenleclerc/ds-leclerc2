@@ -21,13 +21,35 @@ const Provider = (props) => {
       setCart([...cart, { ...item, cantidad }]);
     }
   };
-
-  const isInCart = (id) => {
-    return cart.some((item) => item.id === id);
+  const totalPrecio = () => {
+    return cart.reduce((prev, act) => prev + act.cantidad * act.precio, 0);
   };
 
+  const totalProductos = () =>
+    cart.reduce(
+      (acumulador, productoActual) => acumulador + productoActual.cantidad,
+      0
+    );
+
+  const clearCart = () => setCart([]);
+
+  const isInCart = (id) =>
+    cart.find((producto) => producto.id === id) ? true : false;
+
+  const removeItem = (id) =>
+    setCart(cart.filter((producto) => producto.id !== id));
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        clearCart,
+        removeItem,
+        addToCart,
+        totalPrecio,
+        totalProductos,
+      }}
+    >
       {props.children}
     </CartContext.Provider>
   );

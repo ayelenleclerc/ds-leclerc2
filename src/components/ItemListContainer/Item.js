@@ -9,7 +9,7 @@ const Item = ({ item }) => {
       </div>
       <div>
         <Link to={`/item/${item.id}`}>
-          <button>Ver producto</button>
+          <button>Ver Suegra</button>
         </Link>
       </div>
     </div>

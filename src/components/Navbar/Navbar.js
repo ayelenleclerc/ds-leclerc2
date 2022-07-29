@@ -6,17 +6,21 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <h1 className="navbar-title">Distribuidora Suarez</h1>
+        <h1 className="navbar-title">Dulce Suegra</h1>
         <ul className="nav-ul">
           <Link to="/" className="nav-li">
-            Golosinas
+            Inicio
           </Link>
-          {/* <Link to="/item/:item" className="nav-li">
-            Productos
-          </Link> */}
-          <li className="nav-li">Contacto</li>
+          <Link to="/categoria/buenas" className="nav-li">
+            Buenas
+          </Link>
+          <Link to="/categoria/malas" className="nav-li">
+            Malas
+          </Link>
         </ul>
-        <CartWidget />
+        <Link to="/cart" className="nav-li">
+          <CartWidget />
+        </Link>
       </nav>
     </>
   );
