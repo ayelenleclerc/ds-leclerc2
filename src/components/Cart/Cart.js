@@ -2,11 +2,37 @@ import "./cart.css";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { addDoc, getFirestore, collection } from "firebase/firestore";
 import ItemCart from "./ItemCart";
 
 const Cart = () => {
   const { cart, clearCart, totalPrecio, totalProductos } =
     useContext(CartContext);
+
+  const order = {
+    buyer: {
+      name: "Juan Perez",
+      email: "JuanPerez@gmail.com",
+      phone: "123456789",
+      address: "Calle falsa 123",
+    },
+    items: cart.map((item) => ({
+      id: item.id,
+      nombre: item.nombre,
+      precio: item.precio,
+      cantidad: item.cantidad,
+    })),
+    total: totalPrecio(),
+  };
+
+  function handleClick() {
+    const db = getFirestore();
+    const ordersCollection = collection(db, "orders");
+    addDoc(ordersCollection, order).then(({ id }) => {
+      console.log(id);
+    });
+  }
+
   if (cart.length === 0) {
     return (
       <h2 className="cart-vacio">
@@ -33,7 +59,7 @@ const Cart = () => {
           <button className="cart-btn btn-controls">
             <Link to="/">Seguir eligiendo Suegra</Link>
           </button>
-          <button className="cart-btn btn-controls" onClick={clearCart}>
+          <button className="cart-btn btn-controls" onClick={handleClick}>
             <Link to="/">Finalizar compra</Link>
           </button>
           <p className="cart-contacto">
