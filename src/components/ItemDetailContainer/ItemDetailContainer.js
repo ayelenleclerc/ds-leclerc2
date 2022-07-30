@@ -3,7 +3,7 @@
 import "./itemDetail.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import productos from "../../mock/productos";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Loader from "../Loader/Loader";
 import ItemDetail from "./ItemDetail";
 
@@ -12,17 +12,13 @@ const ItemDetailContainer = () => {
   const [cargando, setCargando] = useState(true);
   const { id } = useParams();
 
-  const productoById = new Promise((res) => {
-    setTimeout(() => res(productos), 2000);
-  });
-
   useEffect(() => {
-    productoById
-      .then((res) => res.find((producto) => producto.id === id))
-      .then((res) => {
-        setItem(res);
-        setCargando(false);
-      });
+    const db = getFirestore();
+    const itemCollection = doc(db, "items", id);
+    getDoc(itemCollection).then((doc) =>
+      setItem({ id: doc.id, ...doc.data() })
+    );
+    setCargando(false);
   }, [id]);
 
   return (

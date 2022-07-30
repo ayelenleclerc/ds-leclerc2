@@ -1,7 +1,13 @@
 import "./itemList.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import productos from "../../mock/productos";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import Loader from "../Loader/Loader";
 import ItemList from "./ItemList";
 
@@ -12,23 +18,31 @@ const ItemListContainer = () => {
   const { categoriaId } = useParams();
 
   useEffect(() => {
-    setCargando(true);
-    const traerProductos = new Promise((res) => {
-      const prodFiltrados = productos.filter(
-        (prod) => prod.categoria === categoriaId
+    const db = getFirestore();
+    const itemCollection = collection(db, "items");
+
+    if (categoriaId) {
+      const itemFiltrado = query(
+        itemCollection,
+        where("categoria", "==", categoriaId)
       );
-      setTimeout(() => {
-        categoriaId ? res(prodFiltrados) : res(productos);
-      }, 2000);
-    });
-    traerProductos
-      .then((data) => {
+      getDocs(itemFiltrado).then((docs) => {
+        docs.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCargando(false);
+      });
+    } else {
+      getDocs(itemCollection).then((docs) => {
+        const data = docs.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         setItems(data);
         setCargando(false);
-      })
-      .catch((error) => {
-        console.log(error);
       });
+    }
   }, [categoriaId]);
 
   return (
