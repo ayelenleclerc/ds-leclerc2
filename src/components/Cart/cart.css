@@ -1,0 +1,129 @@
+.cart-container {
+    display: flex;
+    flex-direction: row
+}
+
+.cart-head-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #9e0cd1;
+    margin-bottom: 1rem;
+}
+
+.cart-itemContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+
+.cart-item {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.cart-img {
+    width: 200px;
+    margin: 10px;
+}
+
+.cart-body {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.cart-titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.cart-descripcion {
+    font-size: 1rem;
+    color: #333;
+}
+
+.cart-controls {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-end;
+    width: 30%;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.cart-total {
+    font-size: 1rem;
+    color: #333;
+}
+
+
+
+.cart-btn {
+    background-color: #9e0cd1;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    box-shadow: 0 0 8px rgb(0 0 0 / 50%);
+}
+
+.btn-controls {
+    margin-top: 20px;
+}
+
+.btn-controls a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.cart-global {
+    padding: 20px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.cart-contacto {
+    margin-top: 20px;
+    text-align: justify;
+    color: #333;
+    font-size: 1rem;
+}
+
+.cart-vacio {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #9e0cd1;
+    margin-bottom: 1rem;
+}
+
+.cart-vacio a {
+    font-size: 2rem;
+    color: #333;
+    text-decoration: none;
+}

@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import "./itemDetail.css";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
@@ -15,34 +16,39 @@ const ItemDetail = ({ item }) => {
   };
 
   return (
-    <div className="item">
-      <img className="item-img" src={item.img} alt={item.nombre} />
-      <div>
-        <h2 className="item-title">{item.nombre}</h2>
-        <p className="item-description">{item.descripcion}</p>
-        <p className="item-description">
+    <div className="itemDetail">
+      <div className="itemDetail-imagen">
+        <img className="itemDetail-img" src={item.img} alt={item.nombre} />
+      </div>
+      <div className="itemDetail-cuerpo">
+        <h2 className="itemDetail-title">{item.nombre}</h2>
+        <p className="itemDetail-description">{item.descripcion}</p>
+        <p className="itemDetail-description">
           Horas disponibles por semana: {item.stock}
         </p>
-        <p className="item-description">${item.precio} /hora</p>
-      </div>
-      {cantidad === 0 ? (
-        <ItemCount
-          stock={item.stock}
-          initial={1}
-          precio={item.precio}
-          onAdd={onAdd}
-        />
-      ) : (
-        <Link to="/cart">
-          <span>
-            Añadiste {cantidad} horas {item.nombre} al Suegri-Carrito.
-          </span>
-          <button>Terminar mi compra</button>
+        <p className="itemDetail-description">Precio: ${item.precio} /hora</p>
+
+        {cantidad === 0 ? (
+          <ItemCount
+            stock={item.stock}
+            initial={1}
+            precio={item.precio}
+            onAdd={onAdd}
+          />
+        ) : (
+          <Link to="/cart">
+            <span className="itemDetail-span">
+              Añadiste {cantidad} horas de <strong>{item.nombre}</strong> al
+              <span className="itemDetail-span intro">Suegri-Carrito</span>.
+            </span>
+            <br />
+            <button className="itemDetail-btn">Terminar mi compra</button>
+          </Link>
+        )}
+        <Link to="/">
+          <button className="itemDetail-btn"> Seguir buscando suegra</button>
         </Link>
-      )}
-      <Link to="/">
-        <button>Seguir buscando suegra</button>
-      </Link>
+      </div>
     </div>
   );
 };
