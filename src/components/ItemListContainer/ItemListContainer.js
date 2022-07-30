@@ -9,16 +9,16 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [cargando, setCargando] = useState(true);
 
-  const { categoria } = useParams();
+  const { categoriaId } = useParams();
 
   useEffect(() => {
     setCargando(true);
     const traerProductos = new Promise((res) => {
       const prodFiltrados = productos.filter(
-        (prod) => prod.categoria === categoria
+        (prod) => prod.categoria === categoriaId
       );
       setTimeout(() => {
-        categoria ? res(prodFiltrados) : res(productos);
+        categoriaId ? res(prodFiltrados) : res(productos);
       }, 2000);
     });
     traerProductos
@@ -29,7 +29,7 @@ const ItemListContainer = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [categoria]);
+  }, [categoriaId]);
 
   return (
     <div>

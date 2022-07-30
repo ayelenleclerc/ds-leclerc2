@@ -18,12 +18,12 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     productoById
-      .then((res) => res.find((producto) => producto.id == id))
+      .then((res) => res.find((producto) => producto.id === id))
       .then((res) => {
         setItem(res);
         setCargando(false);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="ItemDetailContainer">

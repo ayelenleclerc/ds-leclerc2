@@ -6,6 +6,7 @@ const Loader = () => {
       <div className="lds-heart">
         <div />
       </div>
+      <div>Suegri...???</div>
     </div>
   );
 };
