@@ -27,10 +27,11 @@ const ItemListContainer = () => {
         where("categoria", "==", categoriaId)
       );
       getDocs(itemFiltrado).then((docs) => {
-        docs.docs.map((doc) => ({
+        const data = docs.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
+        setItems(data);
         setCargando(false);
       });
     } else {
