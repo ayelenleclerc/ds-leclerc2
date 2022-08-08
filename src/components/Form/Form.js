@@ -8,7 +8,12 @@ import Swal from "sweetalert2";
 const Form = () => {
   const { cart, clearCart, totalPrecio, totalProductos } =
     useContext(CartContext);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    nombre: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
   const order = {
     buyer: {
       name: form.name,
@@ -41,7 +46,7 @@ const Form = () => {
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [e.target.name || ""]: e.target.value,
     });
   };
   const modalBasico = (id) => {
