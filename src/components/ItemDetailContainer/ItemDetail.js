@@ -16,7 +16,7 @@ const ItemDetail = ({ item }) => {
   };
 
   return (
-    <div className="itemDetail">
+    <div className="itemDetail container">
       <div className="itemDetail-imagen">
         <img className="itemDetail-img" src={item.img} alt={item.nombre} />
       </div>
@@ -39,10 +39,10 @@ const ItemDetail = ({ item }) => {
           <Link to="/cart">
             <span className="itemDetail-span">
               Añadiste {cantidad} horas de <strong>{item.nombre}</strong> al
-              <span className="itemDetail-span intro">Suegri-Carrito</span>.
+              <span className="itemDetail-span intro"> Suegri-Carrito</span>.
             </span>
             <br />
-            <button className="itemDetail-btn">Terminar mi compra</button>
+            <button className="itemDetail-btn">Ir al Suegri-Carrito</button>
           </Link>
         )}
         <Link to="/">

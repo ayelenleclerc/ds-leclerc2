@@ -1,3 +1,6 @@
+.container{
+    min-height: 65vh;
+}
 .itemlist-titulo {
     padding: 15px;
     font-size: 3rem;
@@ -54,10 +57,8 @@
 
 .item-img {
     width: 200px;
-
     box-shadow: 0 0 8px rgb(0 0 0 / 50%);
     border-radius: 5px;
-
 }
 
 .item-title {
@@ -83,4 +84,31 @@
     font-weight: 400;
     text-decoration: none;
     box-shadow: 0 0 8px rgb(0 0 0 / 50%);
+}
+
+@media (max-width: 768px) {
+    .itemlist-titulo {
+    font-size: 2rem;
+}
+
+.itemlist-parrafo {
+    font-size: 1rem;
+}
+
+.item {
+   
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    height: 460px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+.item-img {
+    width: 150px;
+}
 }

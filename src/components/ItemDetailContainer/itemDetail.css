@@ -1,5 +1,9 @@
+.container{
+    min-height: 90vh;
+}
 .ItemDetailContainer {
     width: 90%;
+    min-height: 90vh;
     margin: 0 auto;
     display: flex;
 }
@@ -77,4 +81,75 @@
     text-decoration: none;
     box-shadow: 0 0 8px rgb(0 0 0 / 50%);
     margin-top: 20px;
+}
+
+@media (max-width: 768px){
+    .ItemDetailContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.itemDetail {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.itemDetail-imagen {
+    width: 150px;
+}
+
+.itemDetail-img {
+    width: 150px;
+    height: 100%;
+}
+
+.itemDetail-cuerpo {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 0 20px;
+}
+
+.itemDetail-title {
+    font-size: 1.5rem;
+}
+
+.itemDetail-description {
+    font-size: 1rem;
+}
+
+.itemDetail-span {
+    font-size: 1rem;
+    color: #333;
+
+}
+
+.itemDetail-span strong {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.intro {
+    color: #9e0cd1;
+    font-size: 1.2rem;
+}
+
+.itemDetail-btn {
+    background-color: #9e0cd1;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    box-shadow: 0 0 8px rgb(0 0 0 / 50%);
+    margin-top: 10px;
+}
 }

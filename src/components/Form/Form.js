@@ -1,128 +1,114 @@
 import "./form.css";
-import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import { addDoc, getFirestore, collection } from "firebase/firestore";
-import Swal from "sweetalert2";
+import { useForm } from "./useForm";
 
-const Form = () => {
-  const { cart, clearCart, totalPrecio, totalProductos } =
-    useContext(CartContext);
-  const [form, setForm] = useState({
-    nombre: "",
-    email: "",
-    phone: "",
-    address: "",
-  });
-  const order = {
-    buyer: {
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      address: form.address,
-    },
-    items: cart.map((item) => ({
-      id: item.id,
-      nombre: item.nombre,
-      precio: item.precio,
-      cantidad: item.cantidad,
-    })),
-    suegras: totalProductos(),
-    total: totalPrecio(),
-  };
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+};
 
-  function handleClick() {
-    const db = getFirestore();
-    const ordersCollection = collection(db, "orders");
-    addDoc(ordersCollection, order).then(({ id }) => {
-      modalBasico(id);
-    });
+const validateForm = (form) => {
+  const errors = {};
+  if (!form.name.trim()) {
+    errors.name = "El nombre es requerido";
   }
-  const handleSubmit = (e) => {
-    handleClick();
-    clearCart();
-  };
+  if (!form.email.trim()) {
+    errors.email = "El email es requerido";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(form.email)) {
+    errors.email = "El email no es válido";
+  }
+  if (!form.phone) {
+    errors.phone = "El teléfono es requerido";
+  } else if (form.phone.length < 10 || form.phone.length > 17) {
+    errors.phone = "El teléfono no es válido";
+  }
+  if (!form.address.trim()) {
+    errors.address = "La dirección es requerida";
+  }
+  return errors;
+};
+const Form = () => {
+  const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
+    initialForm,
+    validateForm
+  );
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name || ""]: e.target.value,
-    });
-  };
-  const modalBasico = (id) => {
-    Swal.fire({
-      title: "Gracias por elegir Dulce Suegra!",
-      text: `Su Orden: (${id}) ha sido realizada con éxito!`,
-      icon: "success",
-      confirmButtonText: "OK",
-    });
-  };
   return (
-    <>
-      <h1 className="titulo-formulario">Generar orden de Compra</h1>
-      <form className="formulario">
-        <label className="formulario-label" htmlFor="name">
-          Nombre y Apellido
-        </label>
-        <input
-          className="formulario-input"
-          type="text"
-          name="name"
-          placeholder="Brad Pitt o Angelina Jolie pero real"
-          required={true}
-          value={form.name}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="email" className="formulario-label">
-          Email
-        </label>
-        <input
-          className="formulario-input"
-          type="email"
-          name="email"
-          placeholder="ejemplo@ejemplo.com"
-          required={true}
-          value={form.email}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="phone" className="formulario-label">
-          Teléfono
-        </label>
-        <input
-          className="formulario-input"
-          type="phone"
-          name="phone"
-          minLength={10}
-          maxLength={17}
-          placeholder="+54 9 11 22334455"
-          required={true}
-          value={form.phone}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="address" className="formulario-label">
-          Dirección
-        </label>
-        <input
-          className="formulario-input"
-          type="text"
-          name="address"
-          placeholder="Calle falsa 123, Ciudad de Buenos Aires"
-          required={true}
-          value={form.address}
-          onChange={handleChange}
-        />
-        <h5>
-          Nos pondremos en contacto para finalizar las verificaciones y el pago.
-        </h5>
-        <h5> Muchas Gracias</h5>
-        <button className="btn-form" type="submit" onClick={handleSubmit}>
-          <Link to="/">Generar orden</Link>
-        </button>
-      </form>
-    </>
+    <div>
+      <div className="form-container">
+        <h1 className="titulo-formulario">Generar orden de Compra</h1>
+        <form className="formulario">
+          <label className="formulario-label" htmlFor="name">
+            Nombre y Apellido
+          </label>
+          <input
+            className="formulario-input"
+            type="text"
+            name="name"
+            placeholder="Brad Pitt o Angelina Jolie pero real"
+            required
+            value={form.name}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.name && <p className="formulario-error">{errors.name}</p>}
+          <label htmlFor="email" className="formulario-label">
+            Email
+          </label>
+          <input
+            className="formulario-input"
+            type="email"
+            name="email"
+            placeholder="ejemplo@ejemplo.com"
+            required
+            value={form.email}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="formulario-error">{errors.email}</p>}
+          <label htmlFor="phone" className="formulario-label">
+            Teléfono
+          </label>
+          <input
+            className="formulario-input"
+            type="phone"
+            name="phone"
+            placeholder="+54 9 11 22334455"
+            required
+            value={form.phone}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.phone && <p className="formulario-error">{errors.phone}</p>}
+          <label htmlFor="address" className="formulario-label">
+            Dirección
+          </label>
+          <input
+            className="formulario-input"
+            type="text"
+            name="address"
+            placeholder="Calle falsa 123, Ciudad de Buenos Aires"
+            required
+            value={form.address}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.address && (
+            <p className="formulario-error">{errors.address}</p>
+          )}
+          <h5>
+            Nos pondremos en contacto para finalizar las verificaciones y el
+            pago.
+          </h5>
+          <h5> Muchas Gracias</h5>
+          <button type="submit" className="btn-form" onClick={handleSubmit}>
+            <Link to="/">Generar orden</Link>
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 export default Form;

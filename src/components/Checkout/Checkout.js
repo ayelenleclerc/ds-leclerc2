@@ -1,11 +1,7 @@
 import React from "react";
 import Form from "../Form/Form";
 const Checkout = () => {
-  return (
-    <div>
-      <Form />
-    </div>
-  );
+  return <Form />;
 };
 
 export default Checkout;

@@ -10,10 +10,12 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <h2 className="cart-vacio">
-        Aún no elegiste una (o varias) Suegra(s). Pero podes ir a elegir a la
-        ideal al <Link to="/">Inicio</Link>
-      </h2>
+      <div className="cart-vacio-container">
+        <h2 className="cart-vacio">
+          Aún no elegiste una (o varias) Suegra(s). Pero podes ir a elegir a la
+          ideal al <Link to="/">Inicio</Link>
+        </h2>
+      </div>
     );
   }
   return (
@@ -24,7 +26,7 @@ const Cart = () => {
           <ItemCart />
         </div>
         <div className="cart-controls">
-          <button className="cart-btn" onClick={clearCart}>
+          <button className="cart-btn btn-controls" onClick={clearCart}>
             Ya no quiero Suegra
           </button>
           <h3 className="cart-global">Total: ${totalPrecio()} </h3>

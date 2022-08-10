@@ -47,7 +47,7 @@ const ItemListContainer = () => {
   }, [categoriaId]);
 
   return (
-    <div>
+    <div className="container">
       <h2 className="itemlist-titulo">Descubre a tu suegra ideal</h2>
       <p className="itemlist-parrafo">
         A continuación puedes elegir y adquirir el servicio de una o varias de

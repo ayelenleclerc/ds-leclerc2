@@ -1,3 +1,6 @@
+.form-container{
+    min-height: 74.5vh;
+}
 .titulo-formulario{
     font-size: 2em;
     font-weight: bold;
@@ -6,7 +9,7 @@
     text-align: center;
 }
 .formulario{
-    background-color: #9e0cd1;
+    background-color: #de91fa;
     width: 50%;
     margin: 0 auto;
     padding: 1em;
@@ -58,4 +61,17 @@
 }
 .btn-form a:hover{
     color: #9e0cd1;
+}
+
+.formulario-error{
+
+    color: red;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+@media (max-width: 768px){
+    .formulario{
+        width: 90%;
+    }
 }
