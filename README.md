@@ -1,3 +1,15 @@
+# Proyecto de React en Coderhouse.
+
+## E-commerce dedicado a la contratación de actrices, para el rol de Suegras en eventos especiales. Contratación por horas.
+
+## Dependencias Instaladas:
+
+Sweetalert2
+sweetalert2-react-content
+React-router.dom
+Firebase
+gh-pages
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
