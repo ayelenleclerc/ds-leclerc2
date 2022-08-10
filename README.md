@@ -4,11 +4,15 @@
 
 ## Dependencias Instaladas:
 
-Sweetalert2
-sweetalert2-react-content
-React-router.dom
-Firebase
-gh-pages
+#### Sweetalert2
+
+#### sweetalert2-react-content
+
+#### React-router.dom
+
+#### Firebase
+
+#### gh-pages
 
 # Getting Started with Create React App
 
