@@ -1,7 +1,7 @@
 # Proyecto de React en Coderhouse.
 
 ## E-commerce dedicado a la contratación de actrices, para el rol de Suegras en eventos especiales. Contratación por horas.
-
+![](src/DS.gif)
 ## Dependencias Instaladas:
 
 #### Sweetalert2
