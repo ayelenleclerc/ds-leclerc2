@@ -13,37 +13,31 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  const [cargando, setCargando] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const { categoriaId } = useParams();
 
   useEffect(() => {
+    setLoading(true);
+
     const db = getFirestore();
     const itemCollection = collection(db, "items");
 
-    if (categoriaId) {
-      const itemFiltrado = query(
-        itemCollection,
-        where("categoria", "==", categoriaId)
+    const itemCollectionQuery = categoriaId
+      ? query(itemCollection, where("categoria", "==", categoriaId))
+      : itemCollection;
+
+    getDocs(itemCollectionQuery).then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log("No results!");
+      }
+      setItems(
+        querySnapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        })
       );
-      getDocs(itemFiltrado).then((docs) => {
-        const data = docs.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setItems(data);
-        setCargando(false);
-      });
-    } else {
-      getDocs(itemCollection).then((docs) => {
-        const data = docs.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setItems(data);
-        setCargando(false);
-      });
-    }
+      setLoading(false);
+    });
   }, [categoriaId]);
 
   return (
@@ -67,7 +61,7 @@ const ItemListContainer = () => {
       <p className="itemlist-parrafo center">
         No lo dudes más!, contratación por horas.
       </p>
-      {cargando ? <Loader /> : <ItemList items={items} />}
+      {loading ? <Loader /> : <ItemList items={items} />}
     </div>
   );
 };
