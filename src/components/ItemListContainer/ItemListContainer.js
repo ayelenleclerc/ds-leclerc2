@@ -27,15 +27,12 @@ const ItemListContainer = () => {
       ? query(itemCollection, where("categoria", "==", categoriaId))
       : itemCollection;
 
-    getDocs(itemCollectionQuery).then((querySnapshot) => {
-      if (querySnapshot.size === 0) {
-        console.log("No results!");
-      }
-      setItems(
-        querySnapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        })
-      );
+    getDocs(itemCollectionQuery).then((docs) => {
+      const data = docs.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setItems(data);
       setLoading(false);
     });
   }, [categoriaId]);
