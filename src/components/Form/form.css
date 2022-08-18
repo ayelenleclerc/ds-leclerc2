@@ -1,77 +1,71 @@
-.form-container{
-    min-height: 74.5vh;
+.form-container {
+  min-height: 74.5vh;
 }
-.titulo-formulario{
-    font-size: 2em;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 1em;
-    text-align: center;
+.titulo-formulario {
+  font-size: 2em;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1em;
+  text-align: center;
 }
-.formulario{
-    background-color: #de91fa;
-    width: 50%;
-    margin: 0 auto;
-    padding: 1em;
-    border: none;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
+.formulario {
+  background-color: #de91fa;
+  width: 50%;
+  margin: 0 auto;
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
-.formulario input{
-    width: 100%;
-    margin-bottom: 1em;
-    padding: 0.5em;
-    border:none;
-    border-radius: 5px;
-}
-
-
-.formulario-label{
-    font-size: 1.2em;
-    font-weight: bold;
-    color: whitesmoke;
-    margin-bottom: 1em;
-}
-.btn-form{
-   background-color: #9e0cd1;
-    color: white;
-    margin: 10px auto;
-    padding:10px;
-     box-shadow: 0 0 8px 7px rgb(255
-      255
-      255
-      / 50%);
-    border: none;
-    border-radius: 5px;
-    font-size: 1.3rem;
-    cursor: pointer;
+.formulario input {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
 }
 
-.btn-form a{
-    color: white;
-    text-decoration: none;
+.formulario-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-bottom: 1em;
+}
+.btn-form {
+  background-color: #9e0cd1;
+  color: white;
+  margin: 10px auto;
+  padding: 10px;
+  box-shadow: 0 0 8px 7px rgb(255 255 255 / 50%);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
-.btn-form:hover{
-    background-color:whitesmoke;    
-}
-.btn-form a:hover{
-    color: #9e0cd1;
+.btn-form a {
+  color: white;
+  text-decoration: none;
 }
 
-.formulario-error{
-
-    color: red;
-    font-size: 1em;
-    font-weight: bold;
-    margin-bottom: 1em;
+.btn-form:hover {
+  background-color: whitesmoke;
 }
-@media (max-width: 768px){
-    .formulario{
-        width: 90%;
-    }
+.btn-form a:hover {
+  color: #9e0cd1;
+}
+
+.formulario-error {
+  color: red;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+@media (max-width: 768px) {
+  .formulario {
+    width: 90%;
+  }
 }
